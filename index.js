@@ -1,9 +1,17 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  const numbersFound = {};
+  for (const num of array) {
+    const addition = target - num;
+    if (numbersFound[addition]) return true;
+    numbersFound[num] = true;
+  }
+  return false;
 }
 
 /* 
   Write the Big O time complexity of your function here
+  O(1) since using object instead of array to store data
 */
 
 /* 
@@ -12,6 +20,24 @@ function hasTargetSum(array, target) {
 
 /*
   Add written explanation of your solution here
+  function hasTargetSum(array, target) {
+  // Write your algorithm here
+  // create an object to keep track of all the numbers we've seen
+  const numbersFound = {};
+  // iterate over the array of numbers
+  for (const num of array) {
+    // for the current number, identify a complementary number that adds to our target
+    // (for example: if our number is 2, and the target is 5, the complementary number is 3)
+    const addition = target - num;
+    // check if any of the keys in our object is the complement to the current number
+    // if so, return true
+    if (numbersFound[addition]) return true;
+    // save the current number as the key on our object so we can check it later against other numbers
+    numbersFound[num] = true;
+  }
+  // if we reach the end of the array, return false
+  return false;
+}
 */
 
 // You can run `node index.js` to view these console logs
